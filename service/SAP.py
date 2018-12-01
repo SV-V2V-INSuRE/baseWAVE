@@ -2,9 +2,17 @@ import Buffer
 import time, multiprocessing
 
 class SAP:
-    def __init__(self):
+    def __init__(self, name):
         self.InBuffer = Buffer.Buffer()
         self.OutBuffer = Buffer.Buffer()
+        self.name = name
+        self.bind_count=0
+
+
+    def bind(self, service1, service2):
+        service1.bindSAP(self)
+        service2.bindSAP(self, reverse_flow=True)
+
 
 #used for testing
 def _test1(sap):
@@ -16,11 +24,10 @@ def _test2(sap):
     print(sap.InBuffer.read())
     sap.OutBuffer.write("bye")
 
+
 #test functionality
 if __name__ == '__main__':
-
- 
-    sap = SAP()
+    sap = SAP("test")
 
     # spawn tests
     p1 = multiprocessing.Process(target = _test1, args=(sap,))
