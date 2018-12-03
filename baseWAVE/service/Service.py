@@ -11,7 +11,7 @@ class Service:
         self.logger = logger
         self.name=name
 
-
+    # binds self to another service over an SAP
     def bindSAP(self, sap, reverse_flow=False):
         in_buf = sap.InBuffer
         out_buf = sap.OutBuffer 
