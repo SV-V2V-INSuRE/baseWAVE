@@ -1,10 +1,10 @@
-import Buffer
+from .Buffer import Buffer
 import time, multiprocessing
 
 class SAP:
     def __init__(self, name):
-        self.InBuffer = Buffer.Buffer()
-        self.OutBuffer = Buffer.Buffer()
+        self.InBuffer = Buffer()
+        self.OutBuffer = Buffer()
         self.name = name
         self.bind_count=0
 

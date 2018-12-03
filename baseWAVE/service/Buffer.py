@@ -6,8 +6,10 @@ class Buffer:
     def __init__(self):
         self.queue = multiprocessing.Queue()
 
+
     def empty(self):
         return self.queue.empty()
+
 
     def read(self):
         while(True):
@@ -17,5 +19,4 @@ class Buffer:
 
 
     def write(self, msg):
-        print("trying to write: ", msg)
         self.queue.put(msg)

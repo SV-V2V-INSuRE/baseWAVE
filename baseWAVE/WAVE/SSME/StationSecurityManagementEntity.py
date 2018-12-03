@@ -1,14 +1,13 @@
 from service import Service,SAP,Message
 
-class SecureDataService(Service.Service):
+class StationSecurityManagementEntity(Service.Service):
     def __init__(self, logger=None):
-        #inherits Service
-        Service.Service.__init__(self, name = "SDS", logger=logger)
+        Service.Service.__init__(self, name = "SSME", logger=logger)
 
     #assume SAPs are already bound
     def start(self):
         #send test messages
-        self.send("SSME-Sec-SAP", self.getMessage("test.request",("SDS Originating",)))
+        self.send("SSME-Sec-SAP", self.getMessage("test.request",("SSME Originating",)))
 
         self.listen(self.handle)
 
@@ -22,4 +21,5 @@ class SecureDataService(Service.Service):
             self.LogInfo("CONNECTION TO {} CONFIRMED".format(msg.source))
             
         else:
-            self.LogInfo("Received unknown message type: " + msg.name)
+            self.LogInfo("UNKNOWN MESSAGE: " + msg.name)
+            

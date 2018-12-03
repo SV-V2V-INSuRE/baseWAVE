@@ -1,6 +1,6 @@
 class Logger:
-    def LoggInfo(self,msg):
-        pass
+    def LogInfo(self,msg):
+        print(msg)
 
     # log the last exception handled
     def LogException(self):
