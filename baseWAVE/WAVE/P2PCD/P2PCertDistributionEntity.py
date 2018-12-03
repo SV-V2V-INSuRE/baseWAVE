@@ -17,9 +17,18 @@ class P2PCertDistributionEntity(Service.Service):
         self.LogInfo("Received message of type " + msg.name)
         if(msg.name == "test.request"):
             self.respond(resp_buffer, "test.confirm",("confirm",))
-            
+
         elif(msg.name == "test.confirm"):
             self.LogInfo("CONNECTION TO {} CONFIRMED".format(msg.source))
+
+
+        elif(msg.name == "SSME-P2pcdResponseGenerationService.request"):
+            self.LogInfo("CONNECTION TO {} CONFIRMED".format(msg.source))
+
+
+        elif(msg.name == "SSME-P2pcdConfiguration.request"):
+            pass
+
 
         else:
             self.LogInfo("Received unknown message type: " + msg.name)
