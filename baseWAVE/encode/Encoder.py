@@ -1,7 +1,7 @@
 # encode object to message content
 # decode message content to object
 
-class AbstractEncoder
+class AbstractEncoder:
 
     @abstractmethod
     def encode(obj):
