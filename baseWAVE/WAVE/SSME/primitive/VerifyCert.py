@@ -1,20 +1,20 @@
 import enum
 
-class AddAnchorReq:
+class VerifyCertReq:
 
-  def __init__(self, certificate = None):
+  def __init__(self, certificate = None, SPDU = None):
       self.Certificate = certificate
+      self.SDPU = SPDU
 
   def decode(self, content):
       pass
 
-class AddAnchorResCode(enum.Enum):
-    Success = 1
-    Invalid = 2
+class VerifyCertResCode(enum.Enum):
+    Verified = 1
+    NoAnchor = 2
     Revoked = 3
-    Unverified = 4
 
-class AddAnchorConfirm:
+class VerifyCertConfirm:
     def __init__(self, resCode):
         self.ResCode = resCode
 

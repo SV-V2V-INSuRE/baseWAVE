@@ -2,7 +2,7 @@ import enum
 
 class AddCertReq:
 
-  def __init__(self, certificate = "", verified = True):
+  def __init__(self, certificate = None, verified = True):
       self.Certificate = certificate
       self.verified = verified
 
