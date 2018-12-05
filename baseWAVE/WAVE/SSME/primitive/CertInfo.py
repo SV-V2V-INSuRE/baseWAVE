@@ -12,7 +12,7 @@ class CertInfoReq:
   def decode(self, content):
       pass
 
-class CertConfirmResCode(enum.Enum):
+class CertInfoResCode(enum.Enum):
     NotFound = 1
     MultiIdentified = 2
     NotVerified = 3
