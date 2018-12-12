@@ -10,5 +10,5 @@ class Database:
     def saveCert(cert):
         db[cert.hash] = cert
 
-    def findCert(hash)
+    def findCert(hash):
         pass
