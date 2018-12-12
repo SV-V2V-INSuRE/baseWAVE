@@ -1,9 +1,5 @@
 from service import Service,SAP,Message
-
-import primitive.CertInfo as CertInfo
-import primitive.AddAnchor as AddAnchor
-import primitive.AddCert as AddCert
-import primitive.VerifyCert as VerifyCert
+from WAVE.SSME.primitive import CertInfo, AddAnchor, AddAnchor, VerifyCert
 import pymongo
 
 class StationSecurityManagementEntity(Service.Service):
