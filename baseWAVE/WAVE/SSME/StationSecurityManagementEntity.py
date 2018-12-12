@@ -1,13 +1,11 @@
+from utils import Database
 from service import Service,SAP,Message
-from WAVE.SSME.primitive import CertInfo, AddAnchor, AddAnchor, VerifyCert
-import pymongo
+from WAVE.SSME.primitive import CertInfo, AddAnchor, AddCert, VerifyCert
 
 class StationSecurityManagementEntity(Service.Service):
     def __init__(self, logger=None):
         Service.Service.__init__(self, name = "SSME", logger=logger)
-        mongo_url = "mongodb://localhost:27017/"
-        self.mongo = pymongo.MongoClient(mongo_url)
-        self.db = self.mongo["wave"]
+        self.db = Database.Database()
 
     #assume SAPs are already bound
     def start(self):
@@ -29,15 +27,13 @@ class StationSecurityManagementEntity(Service.Service):
             pass
         elif(msg.name == "SSME-AddTrustAnchor.request"):
             req = AddAnchor.AddAnchorReq().decode(msg.content)
-            certs = self.db["certificates"]
-            certs.insert_one(req.Certificate.getDict())
+            self.db.saveCert(req.Certificate)
             conf = AddAnchor.AddAnchorConfirm(AddAnchor.AddAnchorResCode.Success)
 
             pass
         elif(msg.name == "SSME-AddCertificate.request"):
             req = AddCert.AddCertReq().decode(msg.content)
-            certs = self.db["certificates"]
-            certs.insert_one(req.Certificate.getDict())
+            self.db.saveCert(req.Certificate)
             conf = AddCert.AddCertConfirm(AddCert.AddCertResCode.Success)
 
             pass
