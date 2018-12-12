@@ -8,4 +8,7 @@ class Database:
         self.db = dict()
 
     def saveCert(cert):
+        db[cert.hash] = cert
+
+    def findCert(hash)
         pass
