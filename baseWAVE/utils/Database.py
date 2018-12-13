@@ -8,7 +8,10 @@ class Database:
         self.db = dict()
 
     def saveCert(cert):
-        db[cert.hash] = cert
+        db[cert.__hash__()] = cert
 
     def findCert(hash):
-        pass
+        if self.db.has_key(hash):
+            return self.db[hash]
+        else:
+            return False
