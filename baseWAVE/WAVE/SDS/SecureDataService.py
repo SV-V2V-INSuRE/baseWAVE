@@ -18,8 +18,12 @@ class SecureDataService(Service.Service):
 
         if(msg.name == "test.request"):
             self.respond(resp_buffer, "test.confirm",("confirm",))
+
+            
         elif(msg.name == "test.confirm"):
             self.LogInfo("CONNECTION TO {} CONFIRMED".format(msg.source))
+
+
         elif(msg.name == "Sec-CryptomaterialHandle.request"):
             pass
         elif(msg.name == "Sec-CryptomaterialHandle-GenerateKeyPair.request"):
